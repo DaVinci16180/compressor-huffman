@@ -1,6 +1,6 @@
 # Compressor de Huffman
 
-Este projeto implementa um compressor de arquivos de texto com a codificação de Huffman. Para rodar o projeto, execute os seguintes comando no diretório bin:
+Este projeto implementa um compressor de arquivos de texto com a codificação de Huffman. Para rodar o projeto, abra um console no diretório bin e execute os seguintes comandos:
 
 ### Compressão
 ```
