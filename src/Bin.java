@@ -4,6 +4,7 @@ public class Bin implements Serializable {
     private char[] chars;
     private int[] freqs;
     private byte[] content;
+    private int contentSize;
 
     public char[] getChars() {
         return chars;
@@ -27,5 +28,13 @@ public class Bin implements Serializable {
 
     public void setContent(byte[] content) {
         this.content = content;
+    }
+
+    public int getContentSize() {
+        return contentSize;
+    }
+
+    public void setContentSize(int contentSize) {
+        this.contentSize = contentSize;
     }
 }

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Huffman {
 
     private static final HuffmanTree huffmanTree = new HuffmanTree();
 
@@ -56,9 +56,7 @@ public class Main {
         for (Character c : chars)
             charArr[j++] = c;
 
-        byte[] bytes = huffmanTree.encode(content.toString());
-        Bin bin = new Bin();
-        bin.setContent(bytes);
+        Bin bin = huffmanTree.encode(content.toString());
         bin.setChars(charArr);
         bin.setFreqs(freqs.stream().mapToInt(i -> i).toArray());
 
@@ -85,7 +83,7 @@ public class Main {
             freqs.add(i);
 
         huffmanTree.buildTree(chars, freqs);
-        String huffmanDecoded = huffmanTree.decode(bin.getContent());
+        String huffmanDecoded = huffmanTree.decode(bin.getContent(), bin.getContentSize());
 
         fileName += ".txt";
 

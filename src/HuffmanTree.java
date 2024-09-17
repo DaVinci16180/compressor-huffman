@@ -55,7 +55,8 @@ public class HuffmanTree {
         return result;
     }
 
-    public byte[] encode(String s) {
+    public Bin encode(String s) {
+        Bin bin = new Bin();
         StringBuilder coded = new StringBuilder();
 
         for (char c : s.toCharArray()) {
@@ -82,7 +83,10 @@ public class HuffmanTree {
             bytes[i] = b;
         }
 
-        return bytes;
+        bin.setContent(bytes);
+        bin.setContentSize(coded.length());
+
+        return bin;
     }
 
     private Character getCharByCode(StringBuilder code) {
@@ -102,13 +106,14 @@ public class HuffmanTree {
         return getCharByCode(node.getRight(), s.deleteCharAt(0));
     }
 
-    public String decode(byte[] bytes) {
+    public String decode(byte[] bytes, int size) {
         StringBuilder result = new StringBuilder();
         StringBuilder binary = new StringBuilder();
 
         for (byte b : bytes)
             binary.append(String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0'));
 
+        binary.delete(size, binary.length());
         StringBuilder iterator = new StringBuilder(binary);
         while (!iterator.isEmpty()) {
             Character c = getCharByCode(iterator);
